@@ -257,19 +257,14 @@
                 @csrf
                 <div class="input-container">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username" placeholder="Please enter your username" required>
-                    <i class="fas fa-user"></i> <!-- Flaticon on the right -->
+                    <input type="text" name="username" id="username" placeholder="Enter your username" required>
+                    <i class="fas fa-user"></i>
                 </div>
 
                 <div class="input-container">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Please enter your password" required>
-                    <i class="fas fa-lock"></i> <!-- Flaticon on the right -->
-                </div>
-
-                <!-- Show Password Option, placed on the right side -->
-                <div class="show-password">
-                    <input type="checkbox" id="showPassword"> <label for="showPassword">Show Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                    <i class="fas fa-lock"></i>
                 </div>
 
                 <button type="submit">Sign In</button>
