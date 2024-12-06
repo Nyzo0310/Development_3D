@@ -253,22 +253,23 @@
 
 
             <!-- Login form -->
-            <form method="POST" action="{{ route('admin.login.submit') }}">
-                @csrf
-                <div class="input-container">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" placeholder="Enter your username" required>
-                    <i class="fas fa-user"></i>
-                </div>
+            <form method="POST" action="{{ route('login.submit') }}">
+            @csrf
+            <div class="input-container">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter your username" required>
+                <i class="fas fa-user"></i>
+            </div>
 
-                <div class="input-container">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Enter your password" required>
-                    <i class="fas fa-lock"></i>
-                </div>
+            <div class="input-container">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                <i class="fas fa-lock"></i>
+            </div>
 
-                <button type="submit">Sign In</button>
-            </form>
+            <button type="submit">Sign In</button>
+        </form>
+
         </div>
     </div>
 
