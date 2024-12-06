@@ -17,15 +17,25 @@
 
         /* Navbar Styles */
         .navbar {
-            background-color: #007bff;
+            background: linear-gradient(45deg, #007bff, #0056b3);
             padding: 10px 20px;
             color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .navbar-brand {
             font-size: 1.5rem;
             font-weight: bold;
             color: white !important;
+            margin-right: 10px;
+        }
+
+        .navbar .menu-and-logo {
+            display: flex;
+            align-items: center;
         }
 
         .navbar .username {
@@ -38,52 +48,43 @@
         }
 
         /* Sidebar Styles */
-        .sidebar {
-            width: 250px;
-            background-color: #333;
+        .offcanvas {
+            width: 300px;
+            background: linear-gradient(to bottom, #333, #444);
             color: white;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 20px 0;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
         }
 
-        .sidebar .user-info {
-            text-align: center;
-            margin-bottom: 20px;
+        .offcanvas-header {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: white;
         }
 
-        .sidebar .user-info img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            margin-bottom: 10px;
+        .offcanvas-body {
+            padding: 20px 10px;
         }
 
-        .sidebar .user-info h5 {
-            margin: 0;
-            font-size: 1.2rem;
+        /* Fancy Scrollbar */
+        .offcanvas-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        .offcanvas-body::-webkit-scrollbar-thumb {
+            background-color: #007bff;
+            border-radius: 5px;
         }
 
-        .sidebar .user-info span {
-            font-size: 0.9rem;
-            color: #28a745;
-        }
-
-        .sidebar h5 {
-            color: #ccc;
-            font-size: 1rem;
-            margin-left: 15px;
-            margin-top: 20px;
-            text-transform: uppercase;
+        /* Sidebar Section Heading Styles */
+        .sidebar-section {
+            background-color: #444;
+            color: #ffffff;
+            padding: 15px;
             font-weight: bold;
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
         }
 
-        .sidebar h5.highlighted {
-            color: #007bff;
-        }
-
+        /* Sidebar Menu Link */
         .sidebar a {
             text-decoration: none;
             color: white;
@@ -92,32 +93,66 @@
             align-items: center;
             border-radius: 4px;
             margin: 5px 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .sidebar a:hover,
-        .sidebar a.active {
+        .sidebar a:hover {
             background-color: #007bff;
+            color: #ffffff;
+            transform: scale(1.05);
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
         .sidebar a i {
             margin-right: 10px;
         }
 
+        /* User Info */
+        .user-info img {
+            border-radius: 50%;
+            border: 2px solid #007bff;
+            padding: 3px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
         /* Main Content Styles */
         .main-content {
-            margin-left: 250px;
+            font-family: 'Georgia', serif;
             padding: 20px;
             background-color: #f8f9fa;
             min-height: 100vh;
         }
 
+        /* Card Design Styles */
         .kpi-cards .card {
-            text-align: center;
-            color: white;
+            display: flex;
+            align-items: center;
             padding: 20px;
             border-radius: 10px;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            height: 150px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        /* Icon on the Right */
+        .kpi-cards .card .card-icon {
+            font-size: 4rem;
+            opacity: 0.3;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Hover Effects for Cards */
+        .kpi-cards .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Card Background Colors */
         .card.bg-blue {
             background-color: #007bff;
         }
@@ -128,107 +163,219 @@
 
         .card.bg-yellow {
             background-color: #ffc107;
+            color: #333;
         }
 
         .card.bg-red {
             background-color: #dc3545;
         }
 
-        /* Chart Section */
-        .chart-section {
-            margin-top: 30px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        /* "More Info" Link */
+        .kpi-cards .card a {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            display: block;
         }
 
-        .chart-section select {
-            width: 200px;
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+        .kpi-cards .card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Text Adjustment */
+        .card-content {
+            margin-right: 250px;
+        }
+
+        /* Chevron Rotation */
+        .rotate {
+            transform: rotate(90deg);
+            transition: transform 0.3s ease;
         }
     </style>
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <a class="navbar-brand" href="#">Company Name</a>
+        <div class="menu-and-logo">
+            <a class="navbar-brand" href="#">Mclons Manpower Services</a>
+            <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
         <div class="username">
             <i class="fas fa-user-circle"></i>
-            <span>Username</span>
+            @auth
+                <span>{{ Auth::user()->username }}</span>
+            @else
+                <span>Guest</span>
+            @endauth
         </div>
     </nav>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- User Info -->
-        <div class="user-info">
-            <img src="{{ asset('path_to_user_icon.png') }}" alt="User Icon">
-            <h5>Username</h5>
-            <span><i class="fas fa-circle"></i> Online</span>
+    <!-- Offcanvas Sidebar -->
+    <div class="offcanvas offcanvas-start" id="offcanvasMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
+        <div class="offcanvas-body">
+            <div class="sidebar">
+                <!-- User Info -->
+                <div class="user-info text-center mb-4">
+                    @auth
+                        <img src="{{ asset('path_to_user_icon.png') }}" alt="User Icon" class="rounded-circle" width="70">
+                        <h5>{{ Auth::user()->username }}</h5>
+                        <span><i class="fas fa-circle text-success"></i> Online</span>
+                    @else
+                        <img src="{{ asset('path_to_guest_icon.png') }}" alt="Guest Icon" class="rounded-circle" width="70">
+                        <h5>Guest</h5>
+                        <span><i class="fas fa-circle text-secondary"></i> Offline</span>
+                    @endauth
+                </div>
 
-        <!-- Menu -->
-        <h5 class="highlighted">Reports</h5>
-        <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <!-- Menu -->
+                <div class="sidebar-section">Reports</div>
+                <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
 
-        <h5 class="highlighted">Manage</h5>
-        <a href="#"><i class="fas fa-calendar-check"></i> Attendance</a>
-        <a href="#"><i class="fas fa-users"></i> Employees</a>
-        <a href="#"><i class="fas fa-dollar-sign"></i> Deductions</a>
-        <a href="#"><i class="fas fa-briefcase"></i> Positions</a>
+                <div class="sidebar-section">Manage</div>
+                <a href="{{ route('admin.attendance') }}"><i class="fas fa-calendar-check"></i> Attendance</a>
+                <a href="#employeesSubmenu" data-bs-toggle="collapse" class="d-flex align-items-center">
+                    <i class="fas fa-users"></i> Employees
+                    <i class="fas fa-chevron-right ms-auto"></i>
+                </a>
+                <div class="collapse" id="employeesSubmenu">
+                    <ul class="list-unstyled ps-4">
+                        <li><a href="#">Employee List</a></li>
+                        <li><a href="#">Overtime</a></li>
+                        <li><a href="#">Cash Advance</a></li>
+                        <li><a href="#">Schedules</a></li>
+                    </ul>
+                </div>
 
-        <h5 class="highlighted">Printables</h5>
-        <a href="#"><i class="fas fa-print"></i> Payroll</a>
-        <a href="#"><i class="fas fa-clock"></i> Schedule</a>
+                <a href="#"><i class="fas fa-dollar-sign"></i> Deductions</a>
+                <a href="#"><i class="fas fa-briefcase"></i> Positions</a>
+
+                <div class="sidebar-section">Printables</div>
+                <a href="#"><i class="fas fa-print"></i> Payroll</a>
+                <a href="#"><i class="fas fa-clock"></i> Schedule</a>
+            </div>
+        </div>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
         <h2>Dashboard</h2>
+        <!-- KPI Cards -->
         <div class="row g-3 kpi-cards">
             <div class="col-md-3">
                 <div class="card bg-blue">
-                    <h3>1</h3>
-                    <p>Total Employees</p>
+                    <div class="card-content">
+                        <h3 class="card-title">0</h3>
+                        <p class="card-text">Total Employees</p>
+                    </div>
+                    <i class="fas fa-users card-icon"></i>
+                    <a href="#">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card bg-green">
-                    <h3>100.00%</h3>
-                    <p>On Time Percentage</p>
+                    <div class="card-content">
+                        <h3 class="card-title">0.00%</h3>
+                        <p class="card-text">On Time Percentage</p>
+                    </div>
+                    <i class="fas fa-chart-pie card-icon"></i>
+                    <a href="#">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card bg-yellow">
-                    <h3>1</h3>
-                    <p>On Time Today</p>
+                    <div class="card-content">
+                        <h3 class="card-title">0</h3>
+                        <p class="card-text">On Time Today</p>
+                    </div>
+                    <i class="fas fa-clock card-icon"></i>
+                    <a href="#">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card bg-red">
-                    <h3>0</h3>
-                    <p>Late Today</p>
+                    <div class="card-content">
+                        <h3 class="card-title">0</h3>
+                        <p class="card-text">Late Today</p>
+                    </div>
+                    <i class="fas fa-exclamation-triangle card-icon"></i>
+                    <a href="#">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
 
-        <!-- Chart Section -->
-        <div class="chart-section">
-            <h3>Monthly Attendance Report</h3>
-            <select>
-                <option>Select Year</option>
-                <option>2024</option>
-                <option>2023</option>
-            </select>
-            <!-- Chart Placeholder -->
-            <div style="height: 300px; background-color: #e9ecef; margin-top: 20px;"></div>
+        <!-- Monthly Attendance Report -->
+        <div class="mt-5" style="height: calc(100vh - 200px);">
+            <h4>Monthly Attendance Report</h4>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <label for="yearSelector" class="form-label">Select Year:</label>
+                    <select id="yearSelector" class="form-select" style="width: 120px;">
+                        <option>2024</option>
+                        <option>2025</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Full-Width Graph -->
+            <div style="width: 100%; height: 100%;">
+                <canvas id="attendanceChart"></canvas>
+            </div>
         </div>
-    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('attendanceChart').getContext('2d');
+        const attendanceChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [
+                    {
+                        label: 'Ontime',
+                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        backgroundColor: 'rgba(40, 167, 69, 0.8)'
+                    },
+                    {
+                        label: 'Late',
+                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        backgroundColor: 'rgba(108, 117, 125, 0.8)'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                },
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var toggleElements = document.querySelectorAll('[data-bs-toggle="collapse"]');
+
+            toggleElements.forEach(function (element) {
+                element.addEventListener('click', function () {
+                    var icon = element.querySelector('.fa-chevron-right');
+                    if (icon) {
+                        icon.classList.toggle('rotate');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

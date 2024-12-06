@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
+        /* Same styles as before */
         body {
             background: url("/images/Loginbg.jpg") no-repeat center center fixed;
             background-size: cover;
@@ -17,12 +18,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Full height of the viewport */
+            height: 100vh;
             font-family: Arial, sans-serif;
-            position: relative; /* To position the overlay */
+            position: relative;
         }
 
-        /* Dark overlay on top of the background image */
         body::after {
             content: '';
             position: absolute;
@@ -30,12 +30,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Darkens the background */
-            z-index: -1; /* Set the overlay below the content */
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
         }
 
         h1, h2, label {
-            font-family: 'Georgia', serif; /* Ensure headers and labels use Georgia font */
+            font-family: 'Georgia', serif;
         }
 
         .main-container {
@@ -43,8 +43,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column; /* Stack title and form vertically */
-            z-index: 1; /* Places content above the overlay */
+            flex-direction: column;
+            z-index: 1;
         }
 
         .login-container {
@@ -55,19 +55,16 @@
             width: 320px;
             margin-top: 20px;
             text-align: center;
-
-            /* Fade-in animation */
-            opacity: 0; /* Start invisible */
-            animation: fade-in 1.5s ease-in-out forwards; /* Apply fade-in animation */
+            opacity: 0;
+            animation: fade-in 1.5s ease-in-out forwards;
         }
 
-        /* Keyframes for fade-in */
         @keyframes fade-in {
             from {
-                opacity: 0; /* Start fully transparent */
+                opacity: 0;
             }
             to {
-                opacity: 1; /* End fully visible */
+                opacity: 1;
             }
         }
 
@@ -75,9 +72,8 @@
             font-size: 36px;
             color: white;
             margin-bottom: 20px;
-            /* Fade-in animation */
-            opacity: 0; /* Start invisible */
-            animation: fade-in 1.5s ease-in-out forwards; /* Apply fade-in animation */
+            opacity: 0;
+            animation: fade-in 1.5s ease-in-out forwards;
         }
 
         .login-container h2 {
@@ -87,19 +83,39 @@
             margin-bottom: 20px;
         }
 
-        .login-container input {
+        .input-container {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .input-container label {
+            text-align: left;
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 3px;
+            display: block;
+        }
+
+        .input-container input {
             width: 100%;
-            padding: 12px 12px 12px 12px; /* Adjusted padding for the icon */
-            margin: 5px 0; /* Reduced margin to bring inputs closer to labels */
+            padding: 12px;
+            margin: 5px 0;
             border-radius: 5px;
             border: 1px solid #ccc;
             font-size: 16px;
             outline: none;
             box-sizing: border-box;
+            padding-right: 35px;
         }
 
-        .login-container input:focus {
-            border-color: #007bff;
+        .input-container i {
+            position: absolute;
+            top: 60%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: black;
         }
 
         .login-container button {
@@ -118,57 +134,44 @@
             background-color: #0056b3;
         }
 
-        .input-container {
-            position: relative;
-            margin-bottom: 15px; /* Adjusted margin for spacing */
-        }
-
-        .input-container label {
-            text-align: left;
-            font-weight: bold;
+        .show-password {
+            margin-top: 10px;
+            text-align: right;
             font-size: 14px;
-            color: #333;
-            margin-bottom: 3px; /* Reduced margin for closer label */
-            display: block;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
         }
 
-        /* Icon placement on the right inside the input field */
-        .input-container i {
-            position: absolute;
-            top: 60%;
-            right: 10px;
-            transform: translateY(-50%);
-            font-size: 18px;
-            color: black;
+        .show-password label {
+            margin-left: 8px;
         }
 
-        .input-container input {
-            padding-right: 35px; /* Added space for the icon on the right */
+        .show-password input {
+            width: auto;
+            margin: 0;
         }
 
         .error-message {
             color: red;
             font-size: 14px;
             margin-bottom: 10px;
-        }
-
-        /* Styling for the show password checkbox */
-        .show-password {
-            margin-top: 10px;
-            text-align: right; /* Align to the right side */
-            font-size: 14px;
+            text-align: center;
             display: flex;
-            justify-content: flex-end; /* Align items to the right */
-            margin-bottom: 20px; /* Added this line to create space between the checkbox and the button */
+            justify-content: center;
+            align-items: center;
         }
 
-        .show-password label {
-            margin-left: 8px; /* Add space between checkbox and label */
+        .error-message ul {
+            list-style: disc;
+            list-style-position: inside;
+            padding-left: 0;
+            margin: 0;
+            display: inline-block;
         }
 
-        .show-password input {
-            width: auto; /* Ensure the checkbox stays its default size */
-            margin: 0; /* Remove any extra margin */
+        .error-message li {
+            margin-bottom: 5px;
         }
 
         footer {
@@ -178,43 +181,17 @@
             position: fixed;
             bottom: 0;
             width: 100%;
-            z-index: 1; /* Ensure footer is above the overlay */
+            z-index: 1;
         }
-
-        .error-message {
-            color: red;
-            font-size: 14px;
-            margin-bottom: 10px;
-            text-align: center; /* Centers the text */
-            display: flex; /* Enables flexbox for alignment */
-            justify-content: center; /* Centers content horizontally */
-            align-items: center; /* Centers content vertically */
-        }
-
-        .error-message ul {
-            list-style: disc; /* Ensures a bullet point is used */
-            list-style-position: inside; /* Moves the bullet point inside the container, closer to the text */
-            padding-left: 0; /* Removes default padding */
-            margin: 0; /* Removes default margin for cleaner spacing */
-            display: inline-block; /* Prevents the list from taking the full width */
-        }
-
-        .error-message li {
-            margin-bottom: 5px; /* Adds a little space between errors if there are multiple */
-        }
-
     </style>
 </head>
 <body>
     <div class="main-container">
-        <!-- Title outside the login form -->
         <h1>Admin Portal</h1>
 
         <div class="login-container">
             <h2>Login</h2>
 
-            <!-- Display error message if any -->
-            <!-- Error message container -->
             @if ($errors->any())
                 <div class="error-message" id="errorMessage">
                     <ul>
@@ -225,68 +202,62 @@
                 </div>
             @endif
 
-            <script>
-                // JavaScript to make the error message disappear after 3 seconds
-                document.addEventListener("DOMContentLoaded", function () {
-                    const errorMessage = document.getElementById("errorMessage");
-                    if (errorMessage) {
-                        setTimeout(() => {
-                            errorMessage.style.opacity = "0"; // Fade out effect
-                            setTimeout(() => errorMessage.remove(), 500); // Remove the element after fade out
-                        }, 3000); // 3 seconds
-                    }
-                });
+            @if(session('login_success'))
+                <script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Successful',
+                        text: '{{ session('login_success') }}',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                </script>
+            @endif
 
-                @if(session('login_success'))
-                    <script>
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Login Successful',
-                            text: '{{ session('login_success') }}',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    </script>
-                @endif
-
-            </script>
-
-
-            <!-- Login form -->
             <form method="POST" action="{{ route('login.submit') }}">
-            @csrf
-            <div class="input-container">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="Enter your username" required>
-                <i class="fas fa-user"></i>
-            </div>
+                @csrf
+                <div class="input-container">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Enter your username" required>
+                    <i class="fas fa-user"></i>
+                </div>
 
-            <div class="input-container">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Enter your password" required>
-                <i class="fas fa-lock"></i>
-            </div>
+                <div class="input-container">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
 
-            <button type="submit">Sign In</button>
-        </form>
+                <div class="show-password">
+                    <input type="checkbox" id="showPassword">
+                    <label for="showPassword">Show Password</label>
+                </div>
 
+                <button type="submit">Sign In</button>
+            </form>
         </div>
     </div>
 
-    <footer style="padding: 10px; color: white; text-align: center; position: fixed; bottom: 0; width: 100%;">
+    <footer>
         <p>&copy; 2024 MclonsManpowerServices. All rights reserved.</p>
     </footer>
 
-
     <script>
-        // Toggle show password functionality
-        document.getElementById('showPassword').addEventListener('change', function () {
-            const passwordInput = document.getElementById('password');
-            if (this.checked) {
-                passwordInput.type = 'text'; // Show password
-            } else {
-                passwordInput.type = 'password'; // Hide password
+        document.addEventListener("DOMContentLoaded", function () {
+            const errorMessage = document.getElementById("errorMessage");
+            if (errorMessage) {
+                setTimeout(() => {
+                    errorMessage.style.opacity = "0"; // Fade out effect
+                    setTimeout(() => errorMessage.remove(), 500); // Remove the element after fade out
+                }, 3000); // 3 seconds
             }
+
+            // Toggle show password functionality
+            const showPasswordCheckbox = document.getElementById('showPassword');
+            const passwordInput = document.getElementById('password');
+            showPasswordCheckbox.addEventListener('change', function () {
+                passwordInput.type = this.checked ? 'text' : 'password';
+            });
         });
     </script>
 </body>
